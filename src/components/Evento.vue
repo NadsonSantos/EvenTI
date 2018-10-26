@@ -95,26 +95,27 @@ export default {
                 if (this.search !== null) {
                     uri = uri + '&search=' + this.search;
                     this.loading(this.config);
-                };
+                }
                  axios.get(uri).then(response => {
                     if (response.data) {
+
                         this.config = response.data.data;
                         let item = response.data.data.data;
+                        let temporario = response.data.data.data;
                         let today = moment(new Date()).format('YYYY-MM-DD');
                         item.forEach(data => {
                             this.items.push(data);
                         });
                         this.items = temporario.filter((value ) => {
-                            console.log(value.date_start);
                             if(value.date_start === today) {
                                 this.hj.push(value);
                             }else{
                                 return value
                             }
-                        });
-                    };
+                        })
+                    }
                 })
-            };
+            }
         },
         loading : function(value){
             if(value.next_page_url != null){
@@ -124,7 +125,6 @@ export default {
             }
         },
         onSearch: function () {
-            console.log(this.search);
             if(this.search !== null){
                 this.hj = [];
                 this.items = [];
@@ -159,7 +159,7 @@ export default {
                 return ' '
             } else {
                 return moment(hour, 'HH:mm:ss').format('HH:mm') + "h";
-            };
+            }
         },
         formatStart: function (date, hour) {
             moment.locale();
@@ -174,7 +174,7 @@ export default {
                 return " ";
             } else {
                 return '- ' + moment(date, 'YYYY-MM-DD').format('LL') + ", " + moment(hour, 'HH:mm:ss').format('HH:mm') + "h";
-            };
+            }
         },
         getInitialUsers() {
             axios.get(this.uri).then(response => {
@@ -182,7 +182,6 @@ export default {
                 let temporario = response.data.data.data;
                 let today = moment(new Date()).format('YYYY-MM-DD');
                 this.items = temporario.filter((value ) => {
-                    console.log(value.date_start);
                     if(value.date_start === today) {
                         this.hj.push(value);
                     }else{
@@ -209,8 +208,7 @@ export default {
                     let uri = this.uri + this.config.next_page_url;
                     if (this.search !== null) {
                         uri = uri + '&search=' + this.search;
-                        this.loading(this.config);
-                    };
+                    }
                     axios.get(uri).then(response => {
                         if (response.data) {
                             this.config = response.data.data;
@@ -225,8 +223,8 @@ export default {
                     //     return this.load = true 
                     // };
                     this.loading(this.config);
-                };
-            };
+                }
+            }
         },
     },
     mounted() {
