@@ -116,16 +116,12 @@ export default {
                 })
             };
         },
-
         loading : function(value){
             if(value.next_page_url != null){
                 return this.load = true 
             }else{
                 return this.load = false
             }
-        },
-        clicar : function(active){
-            this.active = !this.active
         },
         onSearch: function () {
             console.log(this.search);
