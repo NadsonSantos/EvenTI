@@ -84,7 +84,7 @@ export default {
             items: [],
             search: null,
             uri: 'https://guarded-oasis-77929.herokuapp.com/api/event',
-            load : null
+            load : true,
         }
     },
     methods:{
@@ -357,6 +357,7 @@ export default {
         list-style: none;
     };
     .conteudo{
+        padding-right: 10px;
         margin-left: 88px;
         padding-left: 187px;
         margin-top: -140px;
@@ -379,6 +380,7 @@ export default {
         object-fit: fill;
     };
     .local{
+        padding-right: 10px;
         margin-left: 275px;
         margin-bottom: -40px;
         line-height: 1.82;
@@ -415,7 +417,7 @@ export default {
         font-size: 19px;
         font-weight: 500;
         text-decoration: none;
-        margin-right: 74px;
+        margin-right: 64px;
     };
     .tags{
         display: none;

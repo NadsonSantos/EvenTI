@@ -1,24 +1,40 @@
 <template>
     <div class="m">
         <header class="cabecalho">
-            <img class="logo" src="../../src/assets/bitmap.jpg" alt="logo">
+            <img class="logo" src="../assets/bitmap.jpg" alt="logo">
             <ul class="menu">
                 <li> <a href="#"> Sobre nós</a></li>
                 <li> <a href="#">Créditos</a></li>
                 <li> <a href="#">Sugestão</a></li>
-                <li> <a href="#"><img src="../../src/assets/invalid2-name.png"></a></li>
-                <li> <a href="#"><img src="../../src/assets/group-7.png"></a></li>
+                <li> <a href="#"><img src="../assets/invalid2-name.png"></a></li>
+                <li> <a href="#"><img src="../assets/group-7.png"></a></li>
             </ul>
             <!-- menu retratril  -->
-            <div class="menu2" id="vue-menu">   
-                <a class="menu-btn"  @click.prevent="clicar"><img src="../../src/assets/icons-8-carda-pio.png" alt="menu" class="m-img" ></a>
+            <div class="menu2" >   
+                <a class="menu-btn"  @click.prevent="clicar(active)"><img src="../assets/icons-8-carda-pio.png" alt="menu" class="m-img" ></a>
                 <div class="barra" v-bind:class="{ visible : active, hidden : !active }">
-                    <nav class="menu-lista">
-                        <a href="#" class="m-links"> Sobre nós</a>  
-                        <a href="#" class="m-links">Créditos</a>
-                        <a href="#" class="m-links">Sugestão</a>
-                        <!-- <a href="#" class="m-links menu2-img"><img src="src/assets/invalid2-name.png"></a> -->
-                        <!-- <a href="#" class="m-links menu2-img"><img src="src/assets/group-7.png"></a> -->
+                    <div class="fechar">
+                        <a class="btn-fechar" href="#" @click.prevent="clicar(active)">
+                            <img src="../assets/close.png" alt="fechar">
+                        </a>
+                    </div>
+                    <nav >
+
+                        <ul class="menu-lista"> 
+                            <li class="m-link" v-bind:class="{ fadeleft : active}" ><a href="#" class="link-container"> Sobre nós</a> </li>
+                            <li class="m-link" v-bind:class="{ fadeleft2 : active}"><a href="#" class="link-container">Créditos</a></li>
+                            <li class="m-link" v-bind:class="{ fadeleft3 : active}"><a href="#" class="link-container">Sugestão</a></li>
+                            <!-- <li class="m-link">
+                                <a class="link-container menu2-img" href="#">
+                                    <img src="../assets/invalid2-name.png">
+                                </a>
+                            </li>
+                            <li class="m-link">
+                                <a class="link-container menu2-img" href="#">
+                                    <img src="../assets/group-7.png">
+                                </a>
+                            </li> -->
+                        </ul>  
                     </nav>
                 </div>
             </div>
@@ -34,12 +50,33 @@ export default {
     },
     methods:{
         clicar : function(active){
-            this.active = !this.active
+            this.active = !this.active;
+            return active
         },
     }
 }
 </script>
 <style lang="scss">
+    @keyframes menu {
+        from {
+            opacity: 0;
+            transform: translate3d(-100%, 0, 0);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+    .fadeleft{
+        animation: menu 200ms 0s ease-in-out;
+    }
+    .fadeleft2{
+        animation: menu 300ms 0s ease-in-out;
+    }
+    .fadeleft3{
+        animation: menu 400ms 0s ease-in-out;
+    }
     .cabecalho{
         margin-left: 30px;
         margin-bottom: 20px;
@@ -91,7 +128,7 @@ export default {
     };
     .menu-btn{
         background: none;
-        z-index: 20;
+        z-index: 0;
         margin-right: 20px;
     }
     .barra{
@@ -118,7 +155,7 @@ export default {
         flex-direction: column;
         align-items: center;
     };
-    .m-links{
+    .link-container{
         display: flex;
         align-items: center;
         text-decoration: none;
@@ -127,11 +164,12 @@ export default {
         font-size: 26px;
     }
     .menu2-img{
-            background: #fff;
+        width: 30px;
+        height: 30px;
         img{
-            width: 25px;
-            height: 25px;
-            object-fit: contain;
+            background-color: #fff;
+            width: 100%;
+            height: 100%;
         }
     }
 
@@ -145,6 +183,16 @@ export default {
         visibility: hidden;
         opacity: 0;
         transition: visibility 0s 200ms, opacity 250ms ease-in-out;
+    }
+    .fechar{
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding-right: 20px;
+        padding-top: 20px;
+    }
+    .btn-fechar{
     }
 </style>
 
