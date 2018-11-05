@@ -2,6 +2,9 @@
   <div id="app">
     <Menu></Menu>
     <Evento></Evento>
+    <Credito></Credito>
+    <Sobre></Sobre>
+    <Sugestoes></Sugestoes>
     <Footer></Footer>
     <Media></Media>
   </div>
@@ -10,6 +13,9 @@
 <script>
 import Menu from './components/Menu.vue';
 import Evento from './components/Evento.vue';
+import Credito from './components/Credito.vue';
+import Sugestoes from './components/Sugestoes.vue';
+import Sobre from './components/Sobre.vue';
 import Footer from './components/Footer.vue';
 import Media from './components/Media.vue'
 export default {
@@ -17,8 +23,12 @@ export default {
   components: {
     Menu,
     Evento,
+    Credito,
+    Sobre,
+    Sugestoes,
     Footer,
-    Media
+    Media,
+    
   },
   methods:{
 
